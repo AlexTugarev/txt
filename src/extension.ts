@@ -33,7 +33,33 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.withProgress({ title: "Progressive aggressor 1", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.6));
             vscode.window.withProgress({ title: "Progressive aggressor 2", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(1));
             vscode.window.withProgress({ title: "Progressive aggressor 3", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.3));
-            vscode.window.showErrorMessage('Hello World!');
+            vscode.window.showWarningMessage(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+            New Line here.
+            New Line here.
+            New Line here.
+
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+            New Line here.
+            New Line here.
+            New Line here.
+
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+            New Line here.
+            New Line here.
+            New Line here.
+
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+            `, "OK?!");
+            vscode.window.showInformationMessage(`Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text. 
+            Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text.`);
+            vscode.window.showInformationMessage('Lorem (short version)');
+            vscode.window.showInformationMessage('Link to [gitpod.io](https://gitpod.io)! 🚀');
             const result = await vscode.window.showInformationMessage('Hello World!', "Warning", "Error");
             if (result === "Warning") {
                 vscode.window.withProgress({ title: "Progressive aggressor 4", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(1));
