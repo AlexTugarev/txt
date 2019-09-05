@@ -24,6 +24,36 @@ function newTask(step: number): (progress: vscode.Progress<{ message?: string; i
     };
 }
 
+const longMessage = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+New Line here.
+New Line here.
+New Line here.
+
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+New Line here.
+New Line here.
+New Line here.
+
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+
+New Line here.
+New Line here.
+New Line here.
+
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
+`;
+
+const longLineMessage = `Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text.
+
+Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text.`;
+
+
+
 export function activate(context: vscode.ExtensionContext) {
 	console.log('"TXT" is now active!');
 
@@ -33,31 +63,8 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.withProgress({ title: "Progressive aggressor 1", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.6));
             vscode.window.withProgress({ title: "Progressive aggressor 2", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(1));
             vscode.window.withProgress({ title: "Progressive aggressor 3", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.3));
-            vscode.window.showWarningMessage(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
-
-            New Line here.
-            New Line here.
-            New Line here.
-
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
-
-            New Line here.
-            New Line here.
-            New Line here.
-
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
-
-            New Line here.
-            New Line here.
-            New Line here.
-
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia commodi ea quidem quaerat, porro rem laboriosam expedita doloribus natus similique consectetur harum mollitia aliquam libero, exercitationem praesentium deserunt culpa animi?
-            `, "OK?!");
-            vscode.window.showInformationMessage(`Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text. 
-            Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text.`);
+            vscode.window.showWarningMessage(longMessage, "OK?!");
+            vscode.window.showInformationMessage(longLineMessage);
             vscode.window.showInformationMessage('Lorem (short version)');
             vscode.window.showInformationMessage('Link to [gitpod.io](https://gitpod.io)! 🚀');
             const result = await vscode.window.showInformationMessage('Hello World!', "Warning", "Error");
@@ -82,6 +89,20 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.1));
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.SourceControl, cancellable: true }, newTask(0.1));
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.Window, cancellable: true }, newTask(0.1));
+        }),
+        vscode.commands.registerCommand('extension.withProgress', async () => {
+            const deferred = {
+                resolve: () => {}
+            };
+            vscode.window.withProgress({ title: "Cancel this progress via notification 🏃🏻", location: vscode.ProgressLocation.Window }, (progress, token) => {
+                return new Promise(resolve => {
+                    deferred.resolve = resolve;
+                });
+            });
+            const result = await vscode.window.showInformationMessage('🏃🏻 in status bar', "Cancel it!");
+            if (result === "Cancel it!") {
+                deferred.resolve();
+            }
         })
     ]);
 

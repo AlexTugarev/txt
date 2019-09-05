@@ -12,7 +12,11 @@
 	],
 	"activationEvents": [
 		"*"
-	],
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AlexTugarev/txt"
+    },
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
@@ -40,6 +44,11 @@
                 "command": "extension.progress",
                 "category": "TXT",
                 "title": "Progress"
+            },
+            {
+                "command": "extension.withProgress",
+                "category": "TXT",
+                "title": "withProgress"
             }
         ]
 	},
