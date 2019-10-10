@@ -86,6 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.showErrorMessage('Fail the world!');
         }),
         vscode.commands.registerCommand('extension.progress', () => {
+            vscode.window.withProgress({ title: "Progressive aggressor! (not cancellable)", location: vscode.ProgressLocation.Notification, cancellable: false }, newTask(0.1));
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.Notification, cancellable: true }, newTask(0.1));
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.SourceControl, cancellable: true }, newTask(0.1));
             vscode.window.withProgress({ title: "Progressive aggressor!", location: vscode.ProgressLocation.Window, cancellable: true }, newTask(0.1));
